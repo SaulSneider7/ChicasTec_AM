@@ -4,6 +4,7 @@ import './App.css'
 import app from './firebase'
 
 import AddUser from './components/AddUser';
+import UserList from './components/UserList';
 
 function App() {
   console.log(app);
@@ -15,6 +16,8 @@ function App() {
       </div>
 
       <AddUser />
+      <hr />
+      <UserList />
     </>
   )
 }
