@@ -5,12 +5,16 @@ import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
 function UserList() {
     const [usuarios, setUsuarios] = useState([]);
 
+    //=========================
     // constantes para editar
+    //=========================
     const [editandoID, setEditandoID] = useState(null);
     const [nombreEditado, setNombreEditado] = useState("");
     const [edadEditada, setEdadEditada] = useState("");
 
+    // ===================================================
     // Funcion para editar
+    // ===================================================
     const editarUsuario = async (id) => {
         const usuarioRef = doc(db, "usuarios", id);
         await updateDoc(usuarioRef, {
@@ -22,6 +26,9 @@ function UserList() {
 
 
 
+    // ===================================================
+    // Funcion para obtener los usuarios
+    // ===================================================
     useEffect(() => {
         const ObtenerUsuarios = onSnapshot(collection(db, "usuarios"), (snapshot) => {
             const lista = snapshot.docs.map((doc) => ({
@@ -34,6 +41,11 @@ function UserList() {
         return () => ObtenerUsuarios();
     }, []);
 
+
+
+    // ===================================================
+    // Mostrar los usuarios
+    // ===================================================
     return(
         <div>
             <h2>Lista de Usuarios en Firebase</h2>
