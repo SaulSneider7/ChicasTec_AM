@@ -12,7 +12,12 @@ function UserList() {
 
     // Funcion para editar
     const editarUsuario = async (id) => {
-        
+        const usuarioRef = doc(db, "usuarios", id);
+        await updateDoc(usuarioRef, {
+            nombre: nombreEditado,
+            edad: edadEditada
+        });
+        setEditandoID(null);
     }
 
 
@@ -35,7 +40,32 @@ function UserList() {
             <ul>
                 {usuarios.map((usuario) => (
                     <li key={usuario.id}>
-                        <p>{usuario.nombre} - {usuario.edad} años</p>
+                        {editandoID == usuario.id ? (
+                            <>
+                                <input 
+                                    type="text" 
+                                    value={nombreEditado}
+                                    onChange={(e)=>setNombreEditado(e.target.value)}
+                                />
+                                <input 
+                                    type="text" 
+                                    value={edadEditada}
+                                    onChange={(e)=>setEdadEditada(e.target.value)}
+                                />
+                                <button onClick={() => editarUsuario(usuario.id)}>Guardar</button>
+                                <button onClick={() => setEditandoID(null)}>Cancelar</button>
+                            </>
+                        ) : (
+                            <>
+                                <p>{usuario.nombre} - {usuario.edad} años</p>
+                                <button onClick={() =>{
+                                    setEditandoID(usuario.id);
+                                    setNombreEditado(usuario.nombre);
+                                    setEdadEditada(usuario.edad);
+                                } }>Editar</button>
+                            </>
+                        )}
+                        
                     </li>
                 ))}
             </ul>
