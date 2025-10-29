@@ -1,9 +1,21 @@
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
 
 function UserList() {
     const [usuarios, setUsuarios] = useState([]);
+
+    // constantes para editar
+    const [editandoID, setEditandoID] = useState(null);
+    const [nombreEditado, setNombreEditado] = useState("");
+    const [edadEditada, setEdadEditada] = useState("");
+
+    // Funcion para editar
+    const editarUsuario = async (id) => {
+        
+    }
+
+
 
     useEffect(() => {
         const ObtenerUsuarios = onSnapshot(collection(db, "usuarios"), (snapshot) => {
