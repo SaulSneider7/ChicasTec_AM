@@ -82,14 +82,14 @@ function UserList() {
                         ) : (
                             <>
                                 <p>{usuario.nombre} - {usuario.edad} años</p>
-                                //boton para editar
+                                
                                 <button onClick={() =>{
                                     setEditandoID(usuario.id);
                                     setNombreEditado(usuario.nombre);
                                     setEdadEditada(usuario.edad);
                                 } }>Editar</button>
 
-                                //boton para eliminar
+                                
                                 <button onClick={() => eliminarUsuario(usuario.id)}>Eliminar</button>
                             </>
                         )}
