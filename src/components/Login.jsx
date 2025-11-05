@@ -35,6 +35,8 @@ function Login({ onLogin, cambiarVista}) {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={iniciarSesion}>Iniciar Sesion</button>
+            <p>No tienes una cuenta?</p>
+            <button onClick={cambiarVista}>Crear cuenta</button>
         </div>
     )
 }

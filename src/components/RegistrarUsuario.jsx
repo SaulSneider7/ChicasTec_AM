@@ -40,6 +40,7 @@ function RegistrarUsuario({onRegister, cambiarVista}){
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={registrar}>Registrar</button>
+            <button onClick={cambiarVista}>Iniciar sesion</button>
         </div>
     )
 }
