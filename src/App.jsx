@@ -50,6 +50,7 @@ function App() {
           <AddUser />
           <hr />
           <UserList />
+          <button onClick={cerrarSesion}>Cerrar sesion</button>
         </>
       ) }
 
