@@ -13,6 +13,7 @@ function RegistrarUsuario({onRegister, cambiarVista}){
             // Signed up 
             const user = userCredential.user;
             console.log("Cuenta creada con exito");
+            onRegister(user);
         })
         .catch((error) => {
             const errorCode = error.code;

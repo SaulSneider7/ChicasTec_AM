@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-function Login() {
+function Login({ onLogin, cambiarVista}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -12,6 +12,7 @@ function Login() {
             // Signed in 
             const user = userCredential.user;
             console.log("Se inicio sesion");
+            onLogin(user);
         })
         .catch((error) => {
             const errorCode = error.code;
